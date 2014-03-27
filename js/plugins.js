@@ -22,6 +22,7 @@
 }());
 
 jQuery(document).ready(function(){
+    //custom message and class for validation of user
     jQuery.extend(jQuery.validator.messages, {
         user: "Invalid Username"
     });
@@ -34,7 +35,8 @@ jQuery(document).ready(function(){
         }
     });
 
-     $.validator.setDefaults({
+    //set focus to first invalid value
+    $.validator.setDefaults({
         focusInvalid: false
     });
       $(".validateForm").each(function() {
@@ -59,7 +61,7 @@ jQuery(document).ready(function(){
 
         $(form).on("click", "button", function(event) {
             event.preventDefault();
-            $(form).valid();
+
             if($(form).valid()) {
                $('.form-group').each(function(){
                     $(this).not(".forget-password").addClass("has-success").removeClass('has-warning');
@@ -67,16 +69,8 @@ jQuery(document).ready(function(){
             } else {
                 if (!v.numberOfInvalids())
                     return;
-
-                v.errorList[0].element.focus();
-                if($(v.errorList[0].element).offset().top < 0){
-                    $(window).scrollTop( $(v.errorList[0].element).next().offset().top )
-                } else {
-                    $(window).scrollTop( $(v.errorList[0].element).offset().top )
-                }
             }
             return false;
         });
-
     });
 })
