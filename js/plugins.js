@@ -22,20 +22,23 @@
 }());
 
 jQuery(document).ready(function(){
+    jQuery.extend(jQuery.validator.messages, {
+        user: "Invalid Username"
+    });
+    jQuery.extend(jQuery.validator.classRuleSettings, {
+        user: { user:true }
+    });
+    jQuery.extend(jQuery.validator.methods, {
+        user: function(value, element, param) {
+           return this.optional(element) || value == "designer@gmail.com"
+        }
+    });
+
+     $.validator.setDefaults({
+        focusInvalid: false
+    });
       $(".validateForm").each(function() {
         var form = $(this);
-
-        jQuery.extend(jQuery.validator.messages, {
-            user: "Invalid Username"
-        });
-        jQuery.extend(jQuery.validator.classRuleSettings, {
-            user: { user:true }
-        });
-        jQuery.extend(jQuery.validator.methods, {
-            user: function(value, element, param) {
-               return this.optional(element) || value == "designer@gmail.com"
-            }
-        });
 
         var v = form.validate({
             errorElement: "span",
@@ -49,7 +52,7 @@ jQuery(document).ready(function(){
                 this.defaultShowErrors();
             },
             highlight: function(element) {
-                $(element).closest('.form-group').addClass('has-warning');
+                $(element).closest('.form-group').removeClass('has-success').addClass('has-warning');
                 $(element).addClass('error');
             },
             unhighlight: function(element) {

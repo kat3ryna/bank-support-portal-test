@@ -172,6 +172,7 @@ textarea {
 .form-group {
     margin-bottom: 34px;
     padding: 0 23px 5px 0;
+    position: relative;
 }
 .forget-password{
     letter-spacing: -0.12px;
@@ -182,6 +183,8 @@ span.error{
     font-size: 11px;
     position: absolute;
     margin: 2px;
+    left: 0;
+    bottom: -15px;
     font-family: "Helvetica Neue",Helvetica, Arial, sans-serif;
 }
 .has-warning{
