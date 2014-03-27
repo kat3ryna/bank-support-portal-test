@@ -42,21 +42,12 @@ jQuery(document).ready(function(){
 
         var v = form.validate({
             errorElement: "span",
-            showErrors: function(errorMap, errorList) {
-                if (errorList.length) {
-                    var s = errorList.shift();
-                    var n = [];
-                    n.push(s);
-                    this.errorList = n;
-                }
-                this.defaultShowErrors();
-            },
             highlight: function(element) {
                 $(element).closest('.form-group').removeClass("has-success").addClass('has-warning');
                 $(element).addClass('error');
             },
             unhighlight: function(element) {
-                $(element).closest('.form-group').removeClass('has-warning');
+                $(element).closest('.form-group').addClass("has-success").removeClass('has-warning');
                 $(element).removeClass('error');
             },
             invalidHandler: function(form, validator) {
@@ -71,8 +62,7 @@ jQuery(document).ready(function(){
             $(form).valid();
             if($(form).valid()) {
                $('.form-group').each(function(){
-
-                    $(this).not(".forget-password").addClass("has-success");
+                    $(this).not(".forget-password").addClass("has-success").removeClass('has-warning');
                })
             } else {
                 if (!v.numberOfInvalids())
