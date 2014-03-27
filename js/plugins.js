@@ -52,7 +52,7 @@ jQuery(document).ready(function(){
                 this.defaultShowErrors();
             },
             highlight: function(element) {
-                $(element).closest('.form-group').addClass('has-warning');
+                $(element).closest('.form-group').removeClass("has-success").addClass('has-warning');
                 $(element).addClass('error');
             },
             unhighlight: function(element) {
@@ -71,6 +71,7 @@ jQuery(document).ready(function(){
             $(form).valid();
             if($(form).valid()) {
                $('.form-group').each(function(){
+
                     $(this).not(".forget-password").addClass("has-success");
                })
             } else {
