@@ -52,11 +52,11 @@ jQuery(document).ready(function(){
                 this.defaultShowErrors();
             },
             highlight: function(element) {
-                $(element).closest('.form-group').removeClass('has-success').addClass('has-warning');
+                $(element).closest('.form-group').addClass('has-warning');
                 $(element).addClass('error');
             },
             unhighlight: function(element) {
-                $(element).closest('.form-group').removeClass('has-warning').addClass("has-success");
+                $(element).closest('.form-group').removeClass('has-warning');
                 $(element).removeClass('error');
             },
             invalidHandler: function(form, validator) {
@@ -70,7 +70,9 @@ jQuery(document).ready(function(){
             event.preventDefault();
             $(form).valid();
             if($(form).valid()) {
-               
+               $('.form-group').each(function(){
+                    $(this).not(".forget-password").addClass("has-success");
+               })
             } else {
                 if (!v.numberOfInvalids())
                     return;
